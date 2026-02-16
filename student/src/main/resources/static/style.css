@@ -1,40 +1,224 @@
+/* ===============================
+   Base Styles
+================================= */
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
+    font-family: 'Roboto', sans-serif;
+    background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1470&q=80')
+                no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
 
-h1 {
+
+/* ===============================
+   Container
+================================= */
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* ===============================
+   Header
+================================= */
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 3em;
     color: #2c3e50;
+    margin: 0;
+}
+
+header .subtitle {
+    font-size: 1.2em;
+    color: #7f8c8d;
+}
+
+
+/* ===============================
+   Form Section
+================================= */
+
+.form-section h2 {
+    color: #2980b9;
+    margin-bottom: 15px;
+}
+
+.form-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 
 .form-container input {
-    margin: 5px;
-    padding: 8px;
+    flex: 1 1 30%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    transition: 0.3s ease;
 }
 
+.form-container input:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+
+/* ===============================
+   Buttons
+================================= */
+
 button {
-    padding: 8px 12px;
-    background-color: #3498db;
-    color: white;
+    background: linear-gradient(45deg, #3498db, #9b59b6);
+    color: #fff;
     border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
 }
 
 button:hover {
-    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
+
+/* ===============================
+   Error Messages
+================================= */
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
+.error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 4px;
 }
 
-th, td {
-    padding: 10px;
+
+/* ===============================
+   Student List Section
+================================= */
+
+.cards-wrapper {
+    height: 260px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 40px 10px 32px;  /* extra right padding for scrollbar */
+    border-radius: 14px;
+    background: #f2f2f2;
+    scrollbar-gutter: stable;      /* prevents layout shift */
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+
+/* ===============================
+   Student Card
+================================= */
+
+.student-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transition: 0.3s ease;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center;
+}
+
+.student-card h3 {
+    margin: 0 0 8px;
+    color: #2c3e50;
+    font-size: 18px;
+    line-height: 1.3;
+    word-break: break-word;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.student-card:hover {
+    box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+}
+
+
+
+.student-card p {
+    margin: 5px 0;
+    color: #7f8c8d;
+}
+
+
+/* ===============================
+   Delete Button
+================================= */
+
+.student-card .delete-btn {
+    background: #e74c3c;
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+    display: block;          /* ensures centering */
+    margin: 12px auto 0;     /* perfectly centered */
+    transition: 0.3s ease;
+}
+
+.student-card .delete-btn:hover {
+    background: #c0392b;
+}
+
+
+/* ===============================
+   Responsive Design
+================================= */
+
+@media (max-width: 900px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container input {
+        flex: 1 1 100%;
+    }
 }

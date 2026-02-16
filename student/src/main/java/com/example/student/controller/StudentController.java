@@ -1,6 +1,7 @@
 package com.example.student.controller;
 import com.example.student.model.Student;
 import com.example.student.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public Student createStudent(@RequestBody Student student) {
+    public Student createStudent(@Valid @RequestBody Student student) {
         return service.saveStudent(student);
     }
 
